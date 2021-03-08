@@ -1,0 +1,6 @@
+Taille de chaque bin	Nombre d'item
+item 1
+.
+.
+.
+item n
