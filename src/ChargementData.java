@@ -16,7 +16,7 @@ public class ChargementData {
                 String [] line = data.split(" ");
                 if (line.length < 1){
                     Items item = new Items (Integer.parseInt(line[0]),i);
-                    dataSet.addItems(data);
+                    dataSet.addItems(item);
                     i++;
                 }
                 System.out.println(data);
