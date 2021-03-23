@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 public class DataSet {
     private List<Items> listItems;
@@ -18,7 +18,11 @@ public class DataSet {
     }
 
     public void addItems(Items items){
-        this.listItems.add(items);
+        if(this.listItems==null){
+            this.listItems = new ArrayList<Items>();
+        }else{
+            this.listItems.add(items);
+        }
     }
 
     public void setTailleBin (int tailleBin){
@@ -28,4 +32,5 @@ public class DataSet {
     public void setNbItems (int nbItems){
         this.nbItems = nbItems;
     }
+
 }
