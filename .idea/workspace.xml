@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c4299c3a-d36d-4fac-bf7f-af1ce71ac5c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projet_Opti_Discrete/src/ChargementData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_Opti_Discrete/src/ChargementData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChargementData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChargementData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +30,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../IA/TP/2021-ia-mdp-4a-desquenne-bonnet" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -43,17 +39,6 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Projet_Opti_discret" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -76,6 +61,7 @@
       <workItem from="1616063723478" duration="1924000" />
       <workItem from="1616256021805" duration="596000" />
       <workItem from="1616504707408" duration="147000" />
+      <workItem from="1618401980990" duration="47000" />
     </task>
     <servers />
   </component>
