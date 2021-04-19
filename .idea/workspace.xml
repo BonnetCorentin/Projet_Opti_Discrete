@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c4299c3a-d36d-4fac-bf7f-af1ce71ac5c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projet_Opti_Discrete/src/ChargementData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Projet_Opti_Discrete/src/ChargementData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChargementData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChargementData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FirstFitDecreasing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FirstFitDecreasing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ListerRepertoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ListerRepertoire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +25,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1pvBFf0iLOlZYHdPPJi9Put71ZU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -38,22 +48,12 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Projet_Opti_discret" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -76,6 +76,12 @@
       <workItem from="1616063723478" duration="1924000" />
       <workItem from="1616256021805" duration="596000" />
       <workItem from="1616504707408" duration="147000" />
+      <workItem from="1616571747187" duration="48000" />
+      <workItem from="1617105847024" duration="1646000" />
+      <workItem from="1617355993387" duration="17000" />
+      <workItem from="1617948462903" duration="5388000" />
+      <workItem from="1618235574242" duration="110000" />
+      <workItem from="1618819068170" duration="542000" />
     </task>
     <servers />
   </component>
