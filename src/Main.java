@@ -2,51 +2,35 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import com.google.ortools.Loader;
+import com.google.ortools.linearsolver.MPConstraint;
+import com.google.ortools.linearsolver.MPObjective;
+import com.google.ortools.linearsolver.MPSolver;
+import com.google.ortools.linearsolver.MPVariable;
+
 public class Main {
     public static void main(String[] args) {
         ListerRepertoire l = new ListerRepertoire();
-        String [] listefichier=l.ListerFichier("./data/");
-        for(int i=0;i<listefichier.length-1;i++) {
-            String fileDataName=listefichier[i];
+        String[] listefichier = l.ListerFichier("./data/");
+
+        System.out.println("Borne inférieur :");
+        for (int i = 0; i < listefichier.length - 1; i++) {
+            String fileDataName = listefichier[i];
             ChargementData data = new ChargementData();
             DataSet dataset = new DataSet();
             dataset = data.loadFile("./data/" + fileDataName);
-            int borne_inf=dataset.getBorneInf();
-            System.out.println("Borne inférieur de "+listefichier[i]+": "+borne_inf);
+            int borne_inf = dataset.getBorneInf();
+            System.out.println("Borne inférieur de " + listefichier[i] + ": " + borne_inf);
+        }
 
-            /*public static void main(String args[])
-
-            {
-
-                System.out
-
-                        .println("BIN - PACKING Algorithm 1D Objects(First Fit Decreasing)");
-
-                System.out.println("Enter the number of items in Set: ");
-
-                Scanner sc = new Scanner(System.in);
-
-                int n = sc.nextInt();
-
-                System.out.println("Enter " + n + " items:");
-
-                int[] a = new int[n];
-
-                for (int i = 0; i < n; i++)
-
-                    a[i] = sc.nextInt();
-
-                System.out.println("Enter the bin size: ");
-
-                int size = sc.nextInt();
-
-                int[] sequence = sort(a);
-
-                binPacking(sequence, size, n);
-
-                sc.close();
-
-            }*/
+        System.out.println();
+        System.out.println("First Fit Decreasing :");
+        FirstFitDecreasing ft = new FirstFitDecreasing();
+        for (int j = 0; j < listefichier.length - 1; j++) {
+            String fileDataName = listefichier[j];
+            ChargementData data = new ChargementData();
+            DataSet dataset = data.loadFile("./data/" + fileDataName);
+            System.out.println("Nombre de bin à utiliser avec la méthode firstFitDecreasing pour " + listefichier[j] + ": " + ft.firstFitDecreasing(dataset));
         }
     }
 }
