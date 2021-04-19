@@ -1,23 +1,12 @@
-//This is a java program to implement first fit decreasing for 1D objects using M bins
-
 import java.util.Scanner;
-
-
 
 public class FirstFitDecreasing {
 
     public static void binPacking(int[] a, int size, int n) {
-
         int binCount = 0;
-
         int[] binValues = new int[n];
-
         for (int i = 0; i < binValues.length; i++)
-
             binValues[i] = size;
-
-
-
         for (int i = 0; i < n; i++)
 
             for (int j = 0; j < binValues.length; j++)

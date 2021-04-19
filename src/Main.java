@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         ListerRepertoire l = new ListerRepertoire();
         String [] listefichier=l.ListerFichier("./data/");
         for(int i=0;i<listefichier.length-1;i++) {
