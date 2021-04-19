@@ -7,11 +7,15 @@ public class Items {
         this.idItem = idItem;
     }
 
-    int getIdItem(){
+    public int getIdItem(){
         return this.idItem;
     }
 
-    int getTailleItem(){
+    public int getTailleItem(){
         return this.tailleItem;
+    }
+
+    public String toString(){
+        return "\n Id: "+ idItem+" taille : "+ tailleItem;
     }
 }
