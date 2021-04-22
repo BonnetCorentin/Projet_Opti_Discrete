@@ -1,4 +1,3 @@
-
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
@@ -23,7 +22,7 @@ public class BinPackingOrTools {
         MPVariable[] y = new MPVariable[numBins];
         double infinity = java.lang.Double.POSITIVE_INFINITY;
         MPObjective objective = solver.objective();
-        final MPSolver.ResultStatus resultStatus = solver.solve();
+        MPSolver.ResultStatus resultStatus = solver.solve();
 
         if (solver == null) {
             System.out.println("Impossible de créer un solveur SCIP");
