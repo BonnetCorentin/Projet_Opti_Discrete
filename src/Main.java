@@ -27,6 +27,9 @@ public class Main {
         ChargementData data = new ChargementData();
         DataSet dataset = data.loadFile("./data/binpack1d_00.txt");
         BinPackingOrTools binPackingOrTools = new BinPackingOrTools(dataset);
+
         binPackingOrTools.solutionOptimale();
+
+
     }
 }

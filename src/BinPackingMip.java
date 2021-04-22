@@ -26,17 +26,28 @@ public class BinPackingMip {
   // [START program_part1]
   // [START data_model]
   static class DataModel {
-    public final double[] weights = {48, 30, 19, 36, 36, 27, 42, 42, 36, 24, 30};
-    public final int numItems = weights.length;
-    public final int numBins = weights.length;
-    public final int binCapacity = 100;
+    public final double[] weights;
+    public final int numItems;
+    public final int numBins;
+    public final int binCapacity;
+
+    DataModel(DataSet dataset) {
+      weights = dataset.getWeights();
+      numItems = dataset.getNbItems();
+      numBins = dataset.getNbItems();
+      binCapacity = dataset.getTailleBin();
+    }
+
   }
   // [END data_model]
 
   public static void main(String[] args) throws Exception {
     Loader.loadNativeLibraries();
+    System.out.println("Solution optimale du problème binpack1d_00.txt :");
+    ChargementData datas = new ChargementData();
+    DataSet dataset = datas.loadFile("./data/binpack1d_00.txt");
     // [START data]
-    final DataModel data = new DataModel();
+    final DataModel data = new DataModel(dataset);
     // [END data]
     // [END program_part1]
 
