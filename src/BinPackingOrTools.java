@@ -2,6 +2,7 @@ import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
+import com.google.ortools.Loader;
 
 
 public class BinPackingOrTools {
@@ -12,6 +13,8 @@ public class BinPackingOrTools {
     }
 
     public String solutionOptimale(){
+        Loader.loadNativeLibraries();
+
         double[] weights = dataSet.getWeights();
         int numItems = dataSet.getNbItems();
         int numBins = dataSet.getNbItems();
@@ -22,7 +25,7 @@ public class BinPackingOrTools {
         MPVariable[] y = new MPVariable[numBins];
         double infinity = java.lang.Double.POSITIVE_INFINITY;
         MPObjective objective = solver.objective();
-        MPSolver.ResultStatus resultStatus = solver.solve();
+        final MPSolver.ResultStatus resultStatus = solver.solve();
 
         if (solver == null) {
             System.out.println("Impossible de créer un solveur SCIP");
