@@ -4,6 +4,8 @@ import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         ListerRepertoire l = new ListerRepertoire();
@@ -30,6 +32,7 @@ public class Main {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
             DataSet dataset = data.loadFile("./data/" + fileDataName);
+            Collections.sort(dataset.getListItems(), new ItemComparator());
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitDecreasing pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset));
         }
 
@@ -42,13 +45,47 @@ public class Main {
         ChargementData datas = new ChargementData();
         DataSet dataset = datas.loadFile("./data/binpack1d_00.txt");
         System.out.println(solutionOptimale(dataset));
+
+        //Question 3.b: Limite d'exécution
+        //Faire des tests avec plusieurs jeux de données et voir quand le temps d'éxécution
+        //devient trop long (exemple: plus de 5min d'éxécution).
+        //Faire des moyennes de temps d'éxécution entre les datas...
+
+
+        //Question 4.a: Un item par bin
+        //Etant donné que l'on place un item par bin, on peut conclure aisément qu'il y aura
+        //autant de nombre de bin que d'item.
+        for (int j = 0; j < listeFichier.length - 1; j++) {
+            String fileDataName = listeFichier[j];
+            ChargementData data = new ChargementData();
+            DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+            Collections.shuffle(dataset2.getListItems());
+            System.out.println("Nombre de bin à utiliser avec la méthode 1 item par bin pour :"+dataset2.getNbItems());
+        }
+        System.out.println();
+
+        //Question 4.b: firstFitAleatoire
+
+        for (int j = 0; j < listeFichier.length - 1; j++) {
+            String fileDataName = listeFichier[j];
+            ChargementData data = new ChargementData();
+            DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+            Collections.shuffle(dataset2.getListItems());
+            System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset2));
+        }
+        System.out.println();
+
+        //Question 5.a: Deplacer un item d'un bin vers un autre
+
+
+        //Question 5.b: Echanger deux items de deux bins  différents
     }
 
-    static String solutionOptimale(DataSet dataSet){
+    static String solutionOptimale(DataSet dataSet) {
         final BinPackingOrTools data = new BinPackingOrTools(dataSet);
         MPSolver solver = MPSolver.createSolver("SCIP");
         if (solver == null) {
-            return("Impossible de créer un solveur SCIP");
+            return ("Impossible de créer un solveur SCIP");
         }
         MPVariable[][] x = new MPVariable[data.numItems][data.numBins];
         for (int i = 0; i < data.numItems; ++i) {
@@ -82,15 +119,15 @@ public class Main {
         final MPSolver.ResultStatus resultStatus = solver.solve();
         if (resultStatus == MPSolver.ResultStatus.OPTIMAL) {
             double totalWeight = 0;
-            int j,i;
+            int j, i;
 
-            for (j=0; j < data.numBins; ++j) {
+            for (j = 0; j < data.numBins; ++j) {
                 if (y[j].solutionValue() == 1) {
                     System.out.println("\nBin n°" + j + "\n");
                     double binWeight = 0;
                     for (i = 0; i < data.numItems; ++i) {
                         if (x[i][j].solutionValue() == 1) {
-                            //    System.out.println("Item n°" + i + " avec un poids de : " + data.weights[i]);
+                            System.out.println("Item n°" + i + " avec un poids de : " + data.weights[i]);
                             binWeight += data.weights[i];
                         }
                     }
@@ -98,7 +135,7 @@ public class Main {
                     totalWeight += binWeight;
                 }
             }
-            return("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value());
+            return ("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value());
         } else {
             return ("Aucune solution optimale possible.");
         }

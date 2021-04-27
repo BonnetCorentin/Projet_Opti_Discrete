@@ -5,6 +5,7 @@ public class DataSet {
     private List<Items> listItems;
     private int tailleBin;
     private int nbItems;
+    private List<Bin> listBins;
 
     public int getTailleBin() {
         return this.tailleBin;
@@ -18,11 +19,22 @@ public class DataSet {
         return this.listItems;
     }
 
+    public List<Bin> getListBins() {
+        return this.listBins;
+    }
+
     public void addItems(Items items) {
         if (this.listItems == null) {
             this.listItems = new ArrayList<Items>();
         }
         this.listItems.add(items);
+    }
+
+    public void addBin(Bin bin) {
+        if (this.listBins == null) {
+            this.listBins = new ArrayList<Bin>();
+        }
+        this.listBins.add(bin);
     }
 
     public void setTailleBin(int tailleBin) {
