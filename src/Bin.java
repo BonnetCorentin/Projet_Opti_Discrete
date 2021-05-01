@@ -10,9 +10,7 @@ public class Bin {
     }
 
     private Boolean verificationTaille(Items item) {
-
         this.tailleBinRestant = this.tailleBinRestant - item.getTailleItem();
-
         return (tailleBinRestant < 0);
     }
 

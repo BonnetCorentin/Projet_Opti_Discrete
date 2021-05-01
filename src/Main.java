@@ -22,7 +22,7 @@ public class Main {
             int borne_inf = dataset.getBorneInf();
             System.out.println("Borne inférieur de " + listeFichier[i] + ": " + borne_inf);
         }
-
+/*
         //Question 2: First Fit Decreasing
 
         System.out.println();
@@ -73,12 +73,25 @@ public class Main {
             Collections.shuffle(dataset2.getListItems());
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset2));
         }
+        */
+
         System.out.println();
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
+        //A partir de la méthode First Fit Decreasing (question 2)
+
+        //Exemple avec jeu de data 00.txt
+        FirstFitDecreasing ft = new FirstFitDecreasing();
+        String fileDataName = "binpack1d_00.txt";
+        ChargementData data = new ChargementData();
+        DataSet dataset = data.loadFile("./data/" + fileDataName);
+        Collections.sort(dataset.getListItems(), new ItemComparator());
+        System.out.println("Nombre de Bin total utilisé avant échange: "+ft.firstFitDecreasing(dataset));
 
 
         //Question 5.b: Echanger deux items de deux bins  différents
+        //A partir de la méthode First Fit Decreasing (question 2)
+
     }
 
     static String solutionOptimale(DataSet dataSet) {
@@ -123,7 +136,7 @@ public class Main {
 
             for (j = 0; j < data.numBins; ++j) {
                 if (y[j].solutionValue() == 1) {
-                    System.out.println("\nBin n°" + j + "\n");
+                    System.out.println("\nBin n°" + j );
                     double binWeight = 0;
                     for (i = 0; i < data.numItems; ++i) {
                         if (x[i][j].solutionValue() == 1) {
@@ -135,7 +148,7 @@ public class Main {
                     totalWeight += binWeight;
                 }
             }
-            return ("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value());
+            return ("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value()+"\n");
         } else {
             return ("Aucune solution optimale possible.");
         }
