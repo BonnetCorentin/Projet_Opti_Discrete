@@ -32,4 +32,8 @@ public class Bin {
         this.listItem.add(item);
         return true;
     }
+
+    public void removeItem(Items item){
+        this.listItem.remove(item);
+    }
 }

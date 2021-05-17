@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
-
+/*
 
         //Question 1: Borne inférieure
 
@@ -22,7 +22,7 @@ public class Main {
             int borne_inf = dataset.getBorneInf();
             System.out.println("Borne inférieur de " + listeFichier[i] + ": " + borne_inf);
         }
-/*
+
         //Question 2: First Fit Decreasing
 
         System.out.println();
@@ -73,20 +73,23 @@ public class Main {
             Collections.shuffle(dataset2.getListItems());
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset2));
         }
-        */
-
         System.out.println();
+
+*/
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
         //A partir de la méthode First Fit Decreasing (question 2)
 
         //Exemple avec jeu de data 00.txt
+
         FirstFitDecreasing ft = new FirstFitDecreasing();
         String fileDataName = "binpack1d_00.txt";
         ChargementData data = new ChargementData();
         DataSet dataset = data.loadFile("./data/" + fileDataName);
         Collections.sort(dataset.getListItems(), new ItemComparator());
         System.out.println("Nombre de Bin total utilisé avant échange: "+ft.firstFitDecreasing(dataset));
+        System.out.println("Nombre de Bin total utilisé après échange: "+ft.changeItemToBin(dataset));
+
 
 
         //Question 5.b: Echanger deux items de deux bins  différents
