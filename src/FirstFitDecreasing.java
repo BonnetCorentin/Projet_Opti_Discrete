@@ -10,6 +10,7 @@ public class FirstFitDecreasing {
             Boolean bool = bin.addItem(dataset.getListItems().get(i));
             if (!bool) {
                 dataset.addBin(bin);
+//                System.out.println(bin.getListItem());
                 nombreBin++;
                 bin = new Bin(tailleBin);
             }
@@ -35,24 +36,31 @@ public class FirstFitDecreasing {
                 bin = new Bin(tailleBin);
             }
         }
-        for(int j=0; j<nombreBin; j++){
-            if(stop==false){
-                if(listBins.get(j).getListItem().get(0).getTailleItem() <= listBins.get(j+1).getTailleBinRestant()){
-                    if(listBins.get(j).getListItem()==null){
-                        tempo++;
+        try {
+            for (int j = 0; j < nombreBin; j++) {
+                if (stop == false) {
+                    if (listBins.get(j).getListItem().get(0).getTailleItem() < listBins.get(j + 1).getTailleBinRestant()) {
+                        if (listBins.get(j).getSize()==0) {
+//                            System.out.println("liste bin si null" + listBins.get(j).getListItem());
+                            tempo++;
+                        }
+                        listBins.get(j + 1).addItem(listBins.get(j).getListItem().get(0));
+                        listBins.get(j).removeItem(listBins.get(j).getListItem().get(0));
+/*                        System.out.println(listBins.get(j).getTailleBinRestant());
+                        System.out.println("Item déplacé: " + listBins.get(j).getListItem().get(0).getTailleItem());
+                        System.out.println("Vers bin: " + listBins.get(j + 1).getListItem());
+*/                        stop = true;
+                    } else {
+                        stop = false;
                     }
-                    listBins.get(j+1).addItem(listBins.get(j).getListItem().get(0));
-                    listBins.get(j).removeItem(listBins.get(j).getListItem().get(0));
-                    System.out.println(listBins.get(j).getTailleBinRestant());
-                    System.out.println("Item déplacé: "+ listBins.get(j).getListItem().get(0).getTailleItem());
-                    System.out.println("Vers bin: "+ listBins.get(j+1).getListItem());
-                    stop = true;
-                }else{
-                    stop=false;
                 }
             }
         }
-        System.out.println(tempo);
+        catch(Error e){
+            System.out.println("Il n'est pas possible de déplacer un item vers un autre bin");
+        }
+
+//        System.out.println(tempo);
         nombreBinApresChangement = nombreBin - tempo;
         return nombreBinApresChangement;
     }

@@ -10,10 +10,11 @@ public class Main {
     public static void main(String[] args) {
         ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
-/*
+
 
         //Question 1: Borne inférieure
 
+        System.out.println("Question 1");
         System.out.println("Borne inférieur :");
         for (int i = 0; i < listeFichier.length - 1; i++) {
             String fileDataName = listeFichier[i];
@@ -26,6 +27,7 @@ public class Main {
         //Question 2: First Fit Decreasing
 
         System.out.println();
+        System.out.println("Question 2");
         System.out.println("First Fit Decreasing :");
         FirstFitDecreasing ft = new FirstFitDecreasing();
         for (int j = 0; j < listeFichier.length - 1; j++) {
@@ -39,6 +41,7 @@ public class Main {
         //Question 3.a: Solution optimale de « binpack1d_00.txt »
 
         System.out.println();
+        System.out.println("Question 3.a");
         System.out.println("Solution optimale du problème binpack1d_00.txt :");
 
         Loader.loadNativeLibraries();
@@ -55,6 +58,7 @@ public class Main {
         //Question 4.a: Un item par bin
         //Etant donné que l'on place un item par bin, on peut conclure aisément qu'il y aura
         //autant de nombre de bin que d'item.
+        System.out.println("Question 4.a");
         for (int j = 0; j < listeFichier.length - 1; j++) {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
@@ -66,6 +70,7 @@ public class Main {
 
         //Question 4.b: firstFitAleatoire
 
+        System.out.println("Question 4.b");
         for (int j = 0; j < listeFichier.length - 1; j++) {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
@@ -75,20 +80,21 @@ public class Main {
         }
         System.out.println();
 
-*/
+
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
         //A partir de la méthode First Fit Decreasing (question 2)
 
         //Exemple avec jeu de data 00.txt
 
-        FirstFitDecreasing ft = new FirstFitDecreasing();
+        System.out.println("Question 5.a");
+        FirstFitDecreasing ft2 = new FirstFitDecreasing();
         String fileDataName = "binpack1d_00.txt";
         ChargementData data = new ChargementData();
-        DataSet dataset = data.loadFile("./data/" + fileDataName);
-        Collections.sort(dataset.getListItems(), new ItemComparator());
-        System.out.println("Nombre de Bin total utilisé avant échange: "+ft.firstFitDecreasing(dataset));
-        System.out.println("Nombre de Bin total utilisé après échange: "+ft.changeItemToBin(dataset));
+        DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+        Collections.sort(dataset2.getListItems(), new ItemComparator());
+        System.out.println("Nombre de Bin total utilisé avant échange: "+ft2.firstFitDecreasing(dataset2));
+        System.out.println("Nombre de Bin total utilisé après échange: "+ft2.changeItemToBin(dataset2));
 
 
 

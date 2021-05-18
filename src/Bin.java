@@ -18,6 +18,10 @@ public class Bin {
         return this.listItem;
     }
 
+    public int getSize(){
+        return this.listItem.size();
+    }
+
     public int getTailleBinRestant() {
         return this.tailleBinRestant;
     }
@@ -29,7 +33,7 @@ public class Bin {
         } else if (!verificationTaille(item)) {
             return false;
         }
-        this.listItem.add(item);
+        this.listItem.add(item); //Pq on add deux fois ???
         return true;
     }
 
