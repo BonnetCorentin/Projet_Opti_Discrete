@@ -55,7 +55,13 @@ public class DataSet {
 
     @Override
     public String toString() {
-        return "Nombre d'items: " + nbItems + " et taille: " + tailleBin + "\n Liste des items: " + listItems.toString();
+
+        String toString="";
+
+        for(int i=0;i<this.listBins.size();i++){
+            toString += "\nBin n° " + i + " avec items: "+listBins.get(i).toString()+"\n";
+        }
+        return toString;
     }
 
     public int getBorneInf() {

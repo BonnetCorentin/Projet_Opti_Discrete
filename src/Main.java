@@ -88,15 +88,21 @@ public class Main {
         //Exemple avec jeu de data 00.txt
 
         System.out.println("Question 5.a");
+
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
         String fileDataName = "binpack1d_00.txt";
         ChargementData data = new ChargementData();
+
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
-        Collections.sort(dataset2.getListItems(), new ItemComparator());
-        System.out.println("Nombre de Bin total utilisé avant échange: "+ft2.firstFitDecreasing(dataset2));
-        System.out.println("Nombre de Bin total utilisé après échange: "+ft2.changeItemToBin(dataset2));
+        ft2.firstFitDecreasing(dataset2);
 
+        System.out.println(dataset2.toString()+"\n");
 
+        Items itemaDeplacer = dataset2.getListItems().get(0);
+        Bin binDestination = dataset2.getListBins().get(5);
+
+        System.out.println(ft2.changeItemToBin(dataset2,itemaDeplacer,binDestination));
+        System.out.println(dataset2.toString());
 
         //Question 5.b: Echanger deux items de deux bins  différents
         //A partir de la méthode First Fit Decreasing (question 2)

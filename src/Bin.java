@@ -18,6 +18,14 @@ public class Bin {
         return this.listItem;
     }
 
+    public boolean contains(Items item){
+        if(this.getListItem().contains(item)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public int getSize(){
         return this.listItem.size();
     }
@@ -29,15 +37,23 @@ public class Bin {
     public Boolean addItem(Items item) {
         if (this.listItem == null) {
             this.listItem = new ArrayList<Items>();
-            this.listItem.add(item);
         } else if (!verificationTaille(item)) {
             return false;
         }
-        this.listItem.add(item); //Pq on add deux fois ???
+        this.listItem.add(item);
         return true;
     }
 
     public void removeItem(Items item){
         this.listItem.remove(item);
+        this.tailleBinRestant+=item.getTailleItem();
+    }
+
+    public String toString(){
+        String s="";
+        for(int i=0; i<listItem.size();i++){
+            s += listItem.get(i).toString()+" , ";
+        }
+        return s;
     }
 }
