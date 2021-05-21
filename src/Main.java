@@ -94,14 +94,15 @@ public class Main {
         ChargementData data = new ChargementData();
 
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+
         ft2.firstFitDecreasing(dataset2);
 
         System.out.println(dataset2.toString()+"\n");
 
         Items itemaDeplacer = dataset2.getListItems().get(0);
-        Bin binDestination = dataset2.getListBins().get(5);
+        Bin binDestination = dataset2.getListBins().get(8);
 
-        System.out.println(ft2.changeItemToBin(dataset2,itemaDeplacer,binDestination));
+        ft2.changeItemToBin(dataset2,itemaDeplacer,binDestination);
         System.out.println(dataset2.toString());
 
         //Question 5.b: Echanger deux items de deux bins  différents

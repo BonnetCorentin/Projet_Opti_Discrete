@@ -10,8 +10,11 @@ public class Bin {
     }
 
     private Boolean verificationTaille(Items item) {
+
         this.tailleBinRestant = this.tailleBinRestant - item.getTailleItem();
-        return (tailleBinRestant < 0);
+
+        boolean tailleRestant=tailleBinRestant >= 0;
+        return (tailleRestant);
     }
 
     public ArrayList<Items> getListItem() {
@@ -37,7 +40,9 @@ public class Bin {
     public Boolean addItem(Items item) {
         if (this.listItem == null) {
             this.listItem = new ArrayList<Items>();
+            this.tailleBinRestant = this.tailleBinRestant - item.getTailleItem();
         } else if (!verificationTaille(item)) {
+            this.tailleBinRestant = this.tailleBinRestant + item.getTailleItem();
             return false;
         }
         this.listItem.add(item);
@@ -52,7 +57,7 @@ public class Bin {
     public String toString(){
         String s="";
         for(int i=0; i<listItem.size();i++){
-            s += listItem.get(i).toString()+" , ";
+            s += listItem.get(i).toString();
         }
         return s;
     }

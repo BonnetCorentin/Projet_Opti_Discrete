@@ -6,12 +6,14 @@ public class FirstFitDecreasing {
         int tailleBin = dataset.getTailleBin();
         int nombreBin = 1;
         Bin bin = new Bin(tailleBin);
+
         for (int i = 0; i < dataset.getListItems().size(); i++) {
             Boolean bool = bin.addItem(dataset.getListItems().get(i));
             if (!bool) {
                 dataset.addBin(bin);
                 nombreBin++;
                 bin = new Bin(tailleBin);
+                bin.addItem(dataset.getListItems().get(i));
             }
         }
         return nombreBin;
@@ -24,8 +26,8 @@ public class FirstFitDecreasing {
                 dataset.getListBins().get(i).removeItem(item);
             }
         }
-        if(binDestination.getTailleBinRestant()>item.getTailleItem()){
-            System.out.println(binDestination.addItem(item));
+        if(binDestination.getTailleBinRestant()>=item.getTailleItem()){
+            binDestination.addItem(item);
             return true;
         }else{
             return false;
