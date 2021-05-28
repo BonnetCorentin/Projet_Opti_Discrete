@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+/*
         ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
 
@@ -87,6 +88,8 @@ public class Main {
 
         //Exemple avec jeu de data 00.txt
 
+*/
+
         System.out.println("Question 5.a");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
@@ -96,18 +99,19 @@ public class Main {
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
 
         ft2.firstFitDecreasing(dataset2);
-
         System.out.println(dataset2.toString()+"\n");
-
+/*
         Items itemaDeplacer = dataset2.getListItems().get(0);
         Bin binDestination = dataset2.getListBins().get(8);
 
         ft2.changeItemToBin(dataset2,itemaDeplacer,binDestination);
         System.out.println(dataset2.toString());
-
+*/
         //Question 5.b: Echanger deux items de deux bins  différents
         //A partir de la méthode First Fit Decreasing (question 2)
 
+        //Question 7 Tabu Search
+        Tabou methodeTabou = new Tabou();
     }
 
     static String solutionOptimale(DataSet dataSet) {
