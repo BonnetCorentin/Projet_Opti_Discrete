@@ -21,15 +21,13 @@ public class Bin {
         return this.listItem;
     }
 
-    public boolean contains(Items item){
-        if(this.getListItem().contains(item)){
-            return true;
-        }else{
-            return false;
-        }
+
+    public Boolean itemInBin(Items item) {
+        return listItem.contains(item);
     }
 
-    public int getSize(){
+
+    public int getSize() {
         return this.listItem.size();
     }
 
@@ -49,7 +47,7 @@ public class Bin {
         return true;
     }
 
-    public void removeItem(Items item){
+    public void removeItem(Items item) {
         this.listItem.remove(item);
         this.tailleBinRestant+=item.getTailleItem();
     }
