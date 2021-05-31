@@ -136,6 +136,18 @@ public class Main {
 
         //Fonction Objective
         System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2) + "\n");
+
+        //Question 7 : Tabu search
+        FirstFitDecreasing ft3 = new FirstFitDecreasing();
+        String fileDataName2 = "binpack1d_00.txt";
+        ChargementData data2 = new ChargementData();
+        DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
+        ft3.firstFitDecreasing(dataset3);
+
+        FonctionObjective f2 = new FonctionObjective();
+
+        VoisinageA vA = new VoisinageA();
+        vA.voisinageA(dataset3);
     }
 
     /*static String solutionOptimale(DataSet dataSet) {
