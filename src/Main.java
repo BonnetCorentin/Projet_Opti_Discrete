@@ -97,21 +97,24 @@ public class Main {
         ChargementData data = new ChargementData();
 
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+        FonctionObjective f = new FonctionObjective();
 
         ft2.firstFitDecreasing(dataset2);
         System.out.println(dataset2.toString()+"\n");
-/*
+        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2)+"\n");
+
         Items itemaDeplacer = dataset2.getListItems().get(0);
         Bin binDestination = dataset2.getListBins().get(8);
 
-        ft2.changeItemToBin(dataset2,itemaDeplacer,binDestination);
+        ChangeItemVersBin c = new ChangeItemVersBin();
+        c.changeItemToBin(dataset2,itemaDeplacer,binDestination);
         System.out.println(dataset2.toString());
-*/
+
         //Question 5.b: Echanger deux items de deux bins  différents
         //A partir de la méthode First Fit Decreasing (question 2)
 
-        //Question 7 Tabu Search
-        Tabou methodeTabou = new Tabou();
+        //Fonction Objective
+        System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2)+"\n");
     }
 
     static String solutionOptimale(DataSet dataSet) {
