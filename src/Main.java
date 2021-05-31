@@ -8,8 +8,8 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-/*
-        ListerRepertoire l = new ListerRepertoire();
+
+        /*ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
 
 
@@ -90,7 +90,7 @@ public class Main {
 
 */
 
-        System.out.println("Question 5.a");
+        /*System.out.println("Question 5.a");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
         String fileDataName = "binpack1d_00.txt";
@@ -100,24 +100,45 @@ public class Main {
         FonctionObjective f = new FonctionObjective();
 
         ft2.firstFitDecreasing(dataset2);
-        System.out.println(dataset2.toString()+"\n");
-        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2)+"\n");
+        System.out.println(dataset2.toString() + "\n");
+        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2) + "\n");
 
         Items itemaDeplacer = dataset2.getListItems().get(0);
         Bin binDestination = dataset2.getListBins().get(8);
 
         ChangeItemVersBin c = new ChangeItemVersBin();
-        c.changeItemToBin(dataset2,itemaDeplacer,binDestination);
-        System.out.println(dataset2.toString());
+        c.changeItemToBin(dataset2, itemaDeplacer, binDestination);
+        System.out.println(dataset2.toString());*/
 
         //Question 5.b: Echanger deux items de deux bins  différents
         //A partir de la méthode First Fit Decreasing (question 2)
 
+        System.out.println("Question 5.b");
+
+        FirstFitDecreasing ft2 = new FirstFitDecreasing();
+        String fileDataName = "binpack1d_00.txt";
+        ChargementData data = new ChargementData();
+
+        DataSet dataset2 = data.loadFile("./data/" + fileDataName);
+        FonctionObjective f = new FonctionObjective();
+
+        ft2.firstFitDecreasing(dataset2);
+        System.out.println(dataset2.toString() + "\n");
+        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2) + "\n");
+
+        Items itemaDeplacer = dataset2.getListItems().get(0);
+        Items itemaDeplacer2 = dataset2.getListItems().get(3);
+
+        BinToBin binToBin = new BinToBin();
+        binToBin.binToBin(dataset2, itemaDeplacer, itemaDeplacer2);
+        System.out.println(dataset2.toString());
+
+
         //Fonction Objective
-        System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2)+"\n");
+        System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2) + "\n");
     }
 
-    static String solutionOptimale(DataSet dataSet) {
+    /*static String solutionOptimale(DataSet dataSet) {
         final BinPackingOrTools data = new BinPackingOrTools(dataSet);
         MPSolver solver = MPSolver.createSolver("SCIP");
         if (solver == null) {
@@ -175,5 +196,5 @@ public class Main {
         } else {
             return ("Aucune solution optimale possible.");
         }
-    }
+    }*/
 }

@@ -7,6 +7,21 @@ public class DataSet {
     private int nbItems;
     private List<Bin> listBins;
 
+    public DataSet() {
+    }
+
+    public DataSet(DataSet dataSet) {
+        this.tailleBin = dataSet.getTailleBin();
+        this.nbItems = dataSet.getNbItems();
+
+        for (Items items : dataSet.getListItems()) {
+            this.listItems.add(new Items(items));
+        }
+        for (Bin bin : dataSet.getListBins()) {
+            this.listBins.add(new Bin(bin));
+        }
+    }
+
     public int getTailleBin() {
         return this.tailleBin;
     }
@@ -56,10 +71,10 @@ public class DataSet {
     @Override
     public String toString() {
 
-        String toString="";
+        String toString = "";
 
-        for(int i=0;i<this.listBins.size();i++){
-            toString += "\nBin n° " + i + " avec items: "+listBins.get(i).toString()+"\n";
+        for (int i = 0; i < this.listBins.size(); i++) {
+            toString += "\nBin n° " + i + " avec items: " + listBins.get(i).toString() + "\n";
         }
         return toString;
     }

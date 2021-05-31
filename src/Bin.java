@@ -5,6 +5,14 @@ public class Bin {
     private ArrayList<Items> listItem;
     private int tailleBinRestant;
 
+    Bin(Bin bin) {
+        this.tailleBinRestant = bin.getTailleBinRestant();
+
+        for (Items items : bin.getListItem()) {
+            this.listItem.add(new Items(items));
+        }
+    }
+
     Bin(int tailleBin) {
         this.tailleBinRestant = tailleBin;
     }
@@ -13,7 +21,7 @@ public class Bin {
 
         this.tailleBinRestant = this.tailleBinRestant - item.getTailleItem();
 
-        boolean tailleRestant=tailleBinRestant >= 0;
+        boolean tailleRestant = tailleBinRestant >= 0;
         return (tailleRestant);
     }
 
@@ -49,12 +57,12 @@ public class Bin {
 
     public void removeItem(Items item) {
         this.listItem.remove(item);
-        this.tailleBinRestant+=item.getTailleItem();
+        this.tailleBinRestant += item.getTailleItem();
     }
 
-    public String toString(){
-        String s="";
-        for(int i=0; i<listItem.size();i++){
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < listItem.size(); i++) {
             s += listItem.get(i).toString();
         }
         return s;
