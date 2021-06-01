@@ -18,7 +18,7 @@ public class VoisinageA {
                 if (tempo == true) {
                     FonctionObjective ft = new FonctionObjective();
                     voisin.add(dataVoisin);
-                    System.out.println(ft.fonctionObjective(dataVoisin));
+//                    System.out.println(ft.fonctionObjective(dataVoisin));
                 }
             }
         }

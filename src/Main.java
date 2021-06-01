@@ -9,10 +9,11 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        /*ListerRepertoire l = new ListerRepertoire();
+
+        ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
 
-
+/*
         //Question 1: Borne inférieure
 
         System.out.println("Question 1");
@@ -39,6 +40,7 @@ public class Main {
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitDecreasing pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset));
         }
 
+
         //Question 3.a: Solution optimale de « binpack1d_00.txt »
 
         System.out.println();
@@ -47,7 +49,7 @@ public class Main {
 
         Loader.loadNativeLibraries();
         ChargementData datas = new ChargementData();
-        DataSet dataset = datas.loadFile("./data/binpack1d_00.txt");
+        DataSet dataset = datas.loadFile("./data/test.txt");
         System.out.println(solutionOptimale(dataset));
 
         //Question 3.b: Limite d'exécution
@@ -80,7 +82,7 @@ public class Main {
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset2));
         }
         System.out.println();
-
+*/
 
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
@@ -88,9 +90,8 @@ public class Main {
 
         //Exemple avec jeu de data 00.txt
 
-*/
-
-        /*System.out.println("Question 5.a");
+/*
+        System.out.println("Question 5.a");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
         String fileDataName = "binpack1d_00.txt";
@@ -108,7 +109,7 @@ public class Main {
 
         ChangeItemVersBin c = new ChangeItemVersBin();
         c.changeItemToBin(dataset2, itemaDeplacer, binDestination);
-        System.out.println(dataset2.toString());*/
+        System.out.println(dataset2.toString());
 
         //Question 5.b: Echanger deux items de deux bins  différents
         //A partir de la méthode First Fit Decreasing (question 2)
@@ -116,7 +117,7 @@ public class Main {
         System.out.println("Question 5.b");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
-        String fileDataName = "binpack1d_00.txt";
+        String fileDataName = "test.txt";
         ChargementData data = new ChargementData();
 
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
@@ -133,24 +134,25 @@ public class Main {
         binToBin.binToBin(dataset2, itemaDeplacer, itemaDeplacer2);
         System.out.println(dataset2.toString());
 
-
         //Fonction Objective
         System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2) + "\n");
+*/
 
         //Question 7 : Tabu search
-        FirstFitDecreasing ft3 = new FirstFitDecreasing();
         String fileDataName2 = "binpack1d_00.txt";
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
+        FirstFitDecreasing ft3 = new FirstFitDecreasing();
+
         ft3.firstFitDecreasing(dataset3);
 
-        FonctionObjective f2 = new FonctionObjective();
+        System.out.println(dataset3.toString());
 
         VoisinageA vA = new VoisinageA();
         vA.voisinageA(dataset3);
     }
 
-    /*static String solutionOptimale(DataSet dataSet) {
+    static String solutionOptimale(DataSet dataSet) {
         final BinPackingOrTools data = new BinPackingOrTools(dataSet);
         MPSolver solver = MPSolver.createSolver("SCIP");
         if (solver == null) {
@@ -208,5 +210,5 @@ public class Main {
         } else {
             return ("Aucune solution optimale possible.");
         }
-    }*/
+    }
 }
