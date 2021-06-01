@@ -1,10 +1,7 @@
-import com.google.ortools.Loader;
 import com.google.ortools.linearsolver.MPConstraint;
 import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
-
-import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -139,7 +136,7 @@ public class Main {
 */
 
         //Question 7 : Tabu search
-        String fileDataName2 = "binpack1d_00.txt";
+        String fileDataName2 = "test.txt";
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
         FirstFitDecreasing ft3 = new FirstFitDecreasing();
@@ -148,8 +145,9 @@ public class Main {
 
         System.out.println(dataset3.toString());
 
-        VoisinageA vA = new VoisinageA();
+        Voisinage vA = new Voisinage();
         vA.voisinageA(dataset3);
+        vA.voisinageB(dataset3);
     }
 
     static String solutionOptimale(DataSet dataSet) {
