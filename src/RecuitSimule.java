@@ -10,6 +10,8 @@ public class RecuitSimule {
         double fMax = new FonctionObjective().fonctionObjective(dataSet);
         int i = 0;
 
+        for (int k = 0;)
+
 
     }
 }
