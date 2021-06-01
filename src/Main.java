@@ -14,7 +14,7 @@ public class Main {
 
         //Question 1: Borne inférieure
 
-       /* System.out.println("Question 1");
+        System.out.println("Question 1");
         System.out.println("Borne inférieur :");
         for (int i = 0; i < listeFichier.length - 1; i++) {
             String fileDataName = listeFichier[i];
@@ -84,7 +84,6 @@ public class Main {
 
         //Exemple avec jeu de data 00.txt
 
-
         System.out.println("Question 5.a");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
@@ -128,7 +127,7 @@ public class Main {
 
         //Fonction Objective
         System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f2.fonctionObjective(dataset5) + "\n");
-*/
+
 
         //Question 7 : Tabu search
 
@@ -138,11 +137,14 @@ public class Main {
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
+        System.out.println("---------------------------------------------------------------------------");
         System.out.println(dataset3);
 
         Voisinage vA = new Voisinage();
+        System.out.println("---------------------------------------------------------------------------");
         vA.voisinageA(dataset3);
-        vA.voisinageB(dataset3);
+//        System.out.println("---------------------------------------------------------------------------");
+//        vA.voisinageB(dataset3);
     }
 
     static String solutionOptimale(DataSet dataSet) {

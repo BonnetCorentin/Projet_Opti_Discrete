@@ -16,18 +16,21 @@ public class Voisinage {
                 Bin binDestination = dataVoisin.getListBins().get(j);
                 boolean tempo = c.changeItemToBin(dataVoisin, itemAdeplacer, binDestination);
                 if (tempo == true) {
+                    System.out.println("Item à déplacer: "+itemAdeplacer);
+                    System.out.println("Bin destination: "+binDestination);
                     voisin.add(dataVoisin);
 //                    FonctionObjective ft = new FonctionObjective();
 //                    System.out.println(ft.fonctionObjective(dataVoisin));
                 }
             }
         }
-
+        System.out.println("Voisin A de la solution initiale: " + voisin.size());
+        System.out.println(voisin.toString());
         return voisin;
     }
 
 
-    public void voisinageB(DataSet sol_Initiale) {
+    public ArrayList<DataSet> voisinageB(DataSet sol_Initiale) {
         ArrayList<DataSet> voisin = new ArrayList<>();
         BinToBin b = new BinToBin();
 
@@ -50,5 +53,7 @@ public class Voisinage {
             }
         }
         System.out.println("Voisin B de la solution initiale: " + voisin.size());
+        System.out.println(voisin.toString());
+        return voisin;
     }
 }
