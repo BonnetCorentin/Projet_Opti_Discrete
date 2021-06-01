@@ -13,7 +13,7 @@ public class Main {
         ListerRepertoire l = new ListerRepertoire();
         String[] listeFichier = l.ListerFichier("./data/");
 
-/*
+
         //Question 1: Borne inférieure
 
         System.out.println("Question 1");
@@ -36,7 +36,6 @@ public class Main {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
             DataSet dataset = data.loadFile("./data/" + fileDataName);
-            Collections.sort(dataset.getListItems(), new ItemComparator());
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitDecreasing pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset));
         }
 
@@ -67,7 +66,7 @@ public class Main {
             ChargementData data = new ChargementData();
             DataSet dataset2 = data.loadFile("./data/" + fileDataName);
             Collections.shuffle(dataset2.getListItems());
-            System.out.println("Nombre de bin à utiliser avec la méthode 1 item par bin pour :"+dataset2.getNbItems());
+            System.out.println("Nombre de bin à utiliser avec la méthode 1 item par bin pour le fichier " + listeFichier[j] + " :" + dataset2.getNbItems());
         }
         System.out.println();
 
@@ -78,11 +77,9 @@ public class Main {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
             DataSet dataset2 = data.loadFile("./data/" + fileDataName);
-            Collections.shuffle(dataset2.getListItems());
-            System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitDecreasing(dataset2));
+            System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitAleatoire(dataset2));
         }
         System.out.println();
-*/
 
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
@@ -90,7 +87,7 @@ public class Main {
 
         //Exemple avec jeu de data 00.txt
 
-/*
+
         System.out.println("Question 5.a");
 
         FirstFitDecreasing ft2 = new FirstFitDecreasing();
@@ -100,7 +97,6 @@ public class Main {
         DataSet dataset2 = data.loadFile("./data/" + fileDataName);
         FonctionObjective f = new FonctionObjective();
 
-        ft2.firstFitDecreasing(dataset2);
         System.out.println(dataset2.toString() + "\n");
         System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2) + "\n");
 
@@ -116,35 +112,31 @@ public class Main {
 
         System.out.println("Question 5.b");
 
-        FirstFitDecreasing ft2 = new FirstFitDecreasing();
-        String fileDataName = "test.txt";
-        ChargementData data = new ChargementData();
+        String fileDataName5 = "test.txt";
+        ChargementData data5 = new ChargementData();
 
-        DataSet dataset2 = data.loadFile("./data/" + fileDataName);
-        FonctionObjective f = new FonctionObjective();
+        DataSet dataset5 = data.loadFile("./data/" + fileDataName);
+        FonctionObjective f2 = new FonctionObjective();
 
-        ft2.firstFitDecreasing(dataset2);
-        System.out.println(dataset2.toString() + "\n");
-        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset2) + "\n");
 
-        Items itemaDeplacer = dataset2.getListItems().get(0);
-        Items itemaDeplacer2 = dataset2.getListItems().get(3);
+        System.out.println(dataset5 + "\n");
+        System.out.println("Fonction objective après first Fit Decreasing:\n f(x0)=" + f.fonctionObjective(dataset5) + "\n");
+
+        Items itemaDeplacer2 = dataset2.getListItems().get(0);
+        Items itemaDeplacer3 = dataset2.getListItems().get(3);
 
         BinToBin binToBin = new BinToBin();
-        binToBin.binToBin(dataset2, itemaDeplacer, itemaDeplacer2);
-        System.out.println(dataset2.toString());
+        binToBin.binToBin(dataset5, itemaDeplacer2, itemaDeplacer3);
+        System.out.println(dataset5);
 
         //Fonction Objective
-        System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f.fonctionObjective(dataset2) + "\n");
-*/
+        System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f2.fonctionObjective(dataset5) + "\n");
+
 
         //Question 7 : Tabu search
         String fileDataName2 = "binpack1d_00.txt";
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
-        FirstFitDecreasing ft3 = new FirstFitDecreasing();
-
-        ft3.firstFitDecreasing(dataset3);
 
         System.out.println(dataset3.toString());
 
@@ -194,7 +186,7 @@ public class Main {
 
             for (j = 0; j < data.numBins; ++j) {
                 if (y[j].solutionValue() == 1) {
-                    System.out.println("\nBin n°" + j );
+                    System.out.println("\nBin n°" + j);
                     double binWeight = 0;
                     for (i = 0; i < data.numItems; ++i) {
                         if (x[i][j].solutionValue() == 1) {
@@ -206,7 +198,7 @@ public class Main {
                     totalWeight += binWeight;
                 }
             }
-            return ("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value()+"\n");
+            return ("\nPoids total : " + totalWeight + "\nNombre total de bin utilisé: " + objective.value() + "\n");
         } else {
             return ("Aucune solution optimale possible.");
         }

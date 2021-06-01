@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class VoisinageA {
-    public void voisinageA(DataSet sol_Initiale) {
+    public ArrayList<DataSet> voisinageA(DataSet sol_Initiale) {
         ArrayList<DataSet> voisin = new ArrayList<>();
         int nbvoisin = (sol_Initiale.getListBins().size() - 1) * sol_Initiale.getNbItems();
         int blblablbla = 0;
@@ -23,15 +23,10 @@ public class VoisinageA {
             }
         }
 
-        if (voisin.get(0).equals(voisin.get(1))) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
-        System.out.println(voisin.size());
+        return voisin;
     }
 
-    public void voisinageB(DataSet sol_Initiale){
+    public void voisinageB(DataSet sol_Initiale) {
 
     }
 }

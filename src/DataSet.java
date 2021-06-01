@@ -33,6 +33,10 @@ public class DataSet {
         return this.nbItems;
     }
 
+    public void reinitialisationBin() {
+        this.listBins = null;
+    }
+
     public List<Items> getListItems() {
         return this.listItems;
     }
@@ -43,14 +47,14 @@ public class DataSet {
 
     public void addItems(Items items) {
         if (this.listItems == null) {
-            this.listItems = new ArrayList<Items>();
+            this.listItems = new ArrayList<>();
         }
         this.listItems.add(items);
     }
 
     public void addBin(Bin bin) {
         if (this.listBins == null) {
-            this.listBins = new ArrayList<Bin>();
+            this.listBins = new ArrayList<>();
         }
         this.listBins.add(bin);
     }
@@ -93,7 +97,7 @@ public class DataSet {
         return (int) somme + 1;
     }
 
-    public boolean removeBin(Bin bin){
+    public boolean removeBin(Bin bin) {
         return this.listBins.remove(bin);
     }
 }
