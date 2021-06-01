@@ -13,8 +13,8 @@ public class BinToBin {
                     if (binsList.get(j).itemInBin(item2)) {
                         binsList.get(i).removeItem(item1);
                         binsList.get(j).removeItem(item2);
-                        binsList.get(j).addItem(item1);
-                        binsList.get(i).addItem(item2);
+                        if (!binsList.get(j).addItem(item1)) return false;
+                        if (!binsList.get(i).addItem(item2)) return false;
                         return true;
                     }
                     j++;
