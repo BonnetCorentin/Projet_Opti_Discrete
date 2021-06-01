@@ -7,6 +7,7 @@ public class Bin {
 
     Bin(Bin bin) {
         this.tailleBinRestant = bin.getTailleBinRestant();
+        this.listItem = new ArrayList<>();
 
         for (Items items : bin.getListItem()) {
             this.listItem.add(new Items(items));

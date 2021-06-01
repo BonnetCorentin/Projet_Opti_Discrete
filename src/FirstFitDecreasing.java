@@ -16,6 +16,7 @@ public class FirstFitDecreasing {
                 bin.addItem(dataset.getListItems().get(i));
             }
         }
+        dataset.addBin(bin);
         return nombreBin;
     }
 }

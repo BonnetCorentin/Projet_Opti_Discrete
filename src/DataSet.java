@@ -11,6 +11,9 @@ public class DataSet {
     }
 
     public DataSet(DataSet dataSet) {
+        this.listBins = new ArrayList<>();
+        this.listItems = new ArrayList<>();
+
         this.tailleBin = dataSet.getTailleBin();
         this.nbItems = dataSet.getNbItems();
 
@@ -88,5 +91,9 @@ public class DataSet {
             i++;
         }
         return (int) somme + 1;
+    }
+
+    public boolean removeBin(Bin bin){
+        return this.listBins.remove(bin);
     }
 }
