@@ -17,11 +17,14 @@ public class DataSet {
         this.tailleBin = dataSet.getTailleBin();
         this.nbItems = dataSet.getNbItems();
 
-        for (Items items : dataSet.getListItems()) {
-            this.listItems.add(new Items(items));
-        }
         for (Bin bin : dataSet.getListBins()) {
             this.listBins.add(new Bin(bin));
+        }
+
+        for (Bin bin : this.getListBins()) {
+            for (Items items : bin.getListItem()) {
+                this.listItems.add(items);
+            }
         }
     }
 

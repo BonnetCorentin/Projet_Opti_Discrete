@@ -4,8 +4,6 @@ import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 
-import java.util.*;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -16,7 +14,7 @@ public class Main {
 
         //Question 1: Borne inférieure
 
-        System.out.println("Question 1");
+       /* System.out.println("Question 1");
         System.out.println("Borne inférieur :");
         for (int i = 0; i < listeFichier.length - 1; i++) {
             String fileDataName = listeFichier[i];
@@ -65,7 +63,6 @@ public class Main {
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
             DataSet dataset2 = data.loadFile("./data/" + fileDataName);
-            Collections.shuffle(dataset2.getListItems());
             System.out.println("Nombre de bin à utiliser avec la méthode 1 item par bin pour le fichier " + listeFichier[j] + " :" + dataset2.getNbItems());
         }
         System.out.println();
@@ -115,7 +112,7 @@ public class Main {
         String fileDataName5 = "test.txt";
         ChargementData data5 = new ChargementData();
 
-        DataSet dataset5 = data.loadFile("./data/" + fileDataName);
+        DataSet dataset5 = data5.loadFile("./data/" + fileDataName5);
         FonctionObjective f2 = new FonctionObjective();
 
 
@@ -131,17 +128,21 @@ public class Main {
 
         //Fonction Objective
         System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f2.fonctionObjective(dataset5) + "\n");
-
+*/
 
         //Question 7 : Tabu search
-        String fileDataName2 = "binpack1d_00.txt";
+
+        System.out.println("Question 7: tabou search");
+
+        String fileDataName2 = "test.txt";
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
-        System.out.println(dataset3.toString());
+        System.out.println(dataset3);
 
-        VoisinageA vA = new VoisinageA();
+        Voisinage vA = new Voisinage();
         vA.voisinageA(dataset3);
+        vA.voisinageB(dataset3);
     }
 
     static String solutionOptimale(DataSet dataSet) {

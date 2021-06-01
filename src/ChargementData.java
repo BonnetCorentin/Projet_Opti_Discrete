@@ -24,11 +24,11 @@ public class ChargementData {
                 dataSet.addItems(item);
 
                 Boolean bool = bin.addItem(item);
-                if (!bool)
+                if (!bool) {
                     dataSet.addBin(bin);
-                bin = new Bin(Integer.parseInt(line[0]));
-                bin.addItem(item);
-
+                    bin = new Bin(Integer.parseInt(line[0]));
+                    bin.addItem(item);
+                }
                 i++;
             }
             dataSet.addBin(bin);
