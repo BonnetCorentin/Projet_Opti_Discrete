@@ -12,13 +12,17 @@ public class Voisinage {
             DataSet dataVoisin = new DataSet(sol_Initiale);
             Items itemAdeplacer = dataVoisin.getListItems().get(i);
             for (int j = 0; j < sol_Initiale.getListBins().size(); j++) {
-                dataVoisin = new DataSet(sol_Initiale);
                 Bin binDestination = dataVoisin.getListBins().get(j);
+                System.out.println("---------------------- Nouveau voisin");
+                System.out.println("Bin avant ajout de l'item" + binDestination);
+                System.out.println("Item à déplacer: " + itemAdeplacer);
                 boolean tempo = c.changeItemToBin(dataVoisin, itemAdeplacer, binDestination);
                 if (tempo == true) {
-                    System.out.println("Item à déplacer: "+itemAdeplacer);
-                    System.out.println("Bin destination: "+binDestination);
+                    System.out.println("Bin destination: " + binDestination);
+                    System.out.println("Voisin: " + dataVoisin);
                     voisin.add(dataVoisin);
+                    dataVoisin = new DataSet(sol_Initiale);
+                    itemAdeplacer = dataVoisin.getListItems().get(i);
 //                    FonctionObjective ft = new FonctionObjective();
 //                    System.out.println(ft.fonctionObjective(dataVoisin));
                 }
