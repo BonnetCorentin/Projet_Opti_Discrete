@@ -137,14 +137,9 @@ public class Main {
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
-        System.out.println("---------------------------------------------------------------------------");
-        System.out.println(dataset3);
-
         Voisinage vA = new Voisinage();
         System.out.println("---------------------------------------------------------------------------");
         vA.voisinageB(dataset3);
-//        System.out.println("---------------------------------------------------------------------------");
-//        vA.voisinageB(dataset3);
     }
 
     static String solutionOptimale(DataSet dataSet) {

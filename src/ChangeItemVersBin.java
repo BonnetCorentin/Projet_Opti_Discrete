@@ -4,7 +4,6 @@ public class ChangeItemVersBin {
         int tempo = 0;
 
         if (binDestination.itemInBin(item) == true) {
-            System.out.println("Impossible, l'item se trouve déjà dans ce bin");
             return false;
         }
 
