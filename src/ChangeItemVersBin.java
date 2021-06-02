@@ -17,12 +17,15 @@ public class ChangeItemVersBin {
                 }
             }
         }
-        if (binDestination.getTailleBinRestant() >= item.getTailleItem()) {
-            binDestination.addItem(item);       //On ajoute l'item dans le bin de destination
-            return true;
-        } else {
-            dataset.getListBins().get(tempo).addItem(item); //Si place insuffisante, alors on remet l'item dans son bin d'origine
+        if (!binDestination.addItem(item)) {
+            if (dataset.getListBins().size() <= tempo) {
+                Bin bin = new Bin(dataset.getTailleBin());
+                bin.addItem(item);
+                dataset.addBin(bin);
+            } else
+                dataset.getListBins().get(tempo).addItem(item);
             return false;
         }
+        return true;
     }
 }
