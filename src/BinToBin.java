@@ -6,21 +6,22 @@ public class BinToBin {
         List<Bin> binsList = dataset.getListBins();
         int i = 0;
         do {
-            if(binsList.get(i).getListItem().contains(item1) && binsList.get(i).getListItem().contains(item2)) {
+            if (binsList.get(i).getListItem().contains(item1) && binsList.get(i).getListItem().contains(item2)) {
                 return false;
-            }else{
+            } else {
                 if (binsList.get(i).itemInBin(item1)) {
                     int j = 0;
                     do {
                         if (binsList.get(j).itemInBin(item2)) {
                             binsList.get(i).removeItem(item1);
                             binsList.get(j).removeItem(item2);
-                            if (binsList.get(j).addItem(item1)==false){
+                            if (binsList.get(j).addItem(item1) == false) {
                                 binsList.get(i).addItem(item1);
                                 binsList.get(j).addItem(item2);
                                 return false;
                             }
-                            if (binsList.get(i).addItem(item2)==false){
+                            if (binsList.get(i).addItem(item2) == false) {
+                                binsList.get(j).removeItem(item1);
                                 binsList.get(i).addItem(item1);
                                 binsList.get(j).addItem(item2);
                                 return false;

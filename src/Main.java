@@ -142,7 +142,7 @@ public class Main {
 
         Voisinage vA = new Voisinage();
         System.out.println("---------------------------------------------------------------------------");
-        vA.voisinageA(dataset3);
+        vA.voisinageB(dataset3);
 //        System.out.println("---------------------------------------------------------------------------");
 //        vA.voisinageB(dataset3);
     }

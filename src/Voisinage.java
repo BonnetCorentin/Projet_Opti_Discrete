@@ -44,20 +44,33 @@ public class Voisinage {
             Items item1 = dataVoisin.getListItems().get(i);
 
             for (int j = 1; j < sol_Initiale.getListItems().size(); j++) {
+                System.out.print("Item 1 à échanger : ");
+                System.out.println(item1);
+                System.out.println("---");
+                System.out.print("Item 2 à échanger");
+
                 Items item2 = dataVoisin.getListItems().get(j);
+                System.out.println(item2);
                 boolean tempo = b.binToBin(dataVoisin, item1, item2);
 
                 if (tempo == true) {
+                    System.out.println("----------------------Voisin :");
+                    System.out.println(dataVoisin);
+                    System.out.println("----------------------Fin Voisin :");
                     voisin.add(dataVoisin);
 //                    FonctionObjective ft = new FonctionObjective();
 //                    System.out.println(ft.fonctionObjective(dataVoisin));
                     dataVoisin = new DataSet(sol_Initiale);
                     item1 = dataVoisin.getListItems().get(i);
-                }
+                } else
+                    System.out.println("Impossible d'échanger les deux items");
             }
         }
-        System.out.println("Voisin B de la solution initiale: " + voisin.size());
-        System.out.println(voisin.toString());
+
+        /*System.out.println("Voisin B de la solution initiale: " + voisin.size());
+        System.out.println(voisin);*/
+
+
         return voisin;
     }
 }
