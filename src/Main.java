@@ -133,13 +133,40 @@ public class Main {
 
         System.out.println("Question 7: tabou search");
 
-        String fileDataName2 = "test.txt";
+        String fileDataName2 = "binpack1d_00.txt";
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
         System.out.println("-------------------------------------------------------------------");
+        System.out.println("DataSet initial : ");
+        System.out.println(dataset3);
+        System.out.println("-------------------------------------------------------------------");
         Tabou t = new Tabou();
-        t.methodeTabou(dataset3,13,"A");
+        t.methodeTabou(dataset3, 13, "A");
+
+
+        System.out.println("Question 8: Recuit simulé");
+
+        String fileDataName3 = "binpack1d_01.txt";
+        ChargementData data3 = new ChargementData();
+        DataSet dataset4 = data3.loadFile("./data/" + fileDataName3);
+
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("DataSet initial : ");
+        System.out.println(dataset4);
+
+        System.out.println("Avec un nombre de bin = " + dataset4.getListBins().size());
+
+        RecuitSimule recuitSimule = new RecuitSimule();
+
+        System.out.println("Solution obtenue avec le recuit simulé :");
+
+
+        DataSet d = recuitSimule.recuitSimule(dataset4, 3, 'A');
+        System.out.println(d);
+        System.out.println("Avec un nomber de bin = " + d.getListBins().size());
+
+
     }
 
     static String solutionOptimale(DataSet dataSet) {

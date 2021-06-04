@@ -11,16 +11,21 @@ public class Voisinage {
         for (int i = 0; i < sol_Initiale.getListItems().size(); i++) {
             DataSet dataVoisin = new DataSet(sol_Initiale);
             Items itemAdeplacer = dataVoisin.getListItems().get(i);
+
             for (int j = 0; j < sol_Initiale.getListBins().size(); j++) {
                 Bin binDestination = dataVoisin.getListBins().get(j);
+
                 boolean tempo = c.changeItemToBin(dataVoisin, itemAdeplacer, binDestination);
+
                 if (tempo == true) {
                     voisin.add(dataVoisin);
-                    dataVoisin = new DataSet(sol_Initiale);
-                    itemAdeplacer = dataVoisin.getListItems().get(i);
+
+
 //                    FonctionObjective ft = new FonctionObjective();
 //                    System.out.println(ft.fonctionObjective(dataVoisin));
                 }
+                dataVoisin = new DataSet(sol_Initiale);
+                itemAdeplacer = dataVoisin.getListItems().get(i);
             }
         }
 //        System.out.println("Voisin A de la solution initiale: " + voisin.size());
@@ -52,10 +57,6 @@ public class Voisinage {
                 }
             }
         }
-
-        System.out.println("Voisin B de la solution initiale: " + voisin.size());
-        System.out.println(voisin);
-
 
         return voisin;
     }
