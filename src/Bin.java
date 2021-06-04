@@ -68,4 +68,13 @@ public class Bin {
         }
         return s;
     }
+
+    public boolean verification(int id){
+        for(int i=0;i<this.listItem.size();i++){
+            if(this.listItem.get(i).getIdItem()==id){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -1,13 +1,13 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RecuitSimule {
 
-
     DataSet recuitSimule(DataSet dataSet, double temperature, char voisinageChoix) {
 
-        List<DataSet> voisinage = new ArrayList<>();
+        ArrayList<Dataset_item> voisinage = new ArrayList<>();
 
         ArrayList<Double> arrayListTemperature = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class RecuitSimule {
                         voisinage = new Voisinage().voisinageA(dataSetArrayList.get(i));
                         break;
                     case 'B':
-                        voisinage = new Voisinage().voisinageB(dataSetArrayList.get(i));
+//                        voisinage = new Voisinage().voisinageB(dataSetArrayList.get(i));
                         break;
                     default:
                         System.out.println("Veuillez choisir A ou B");
@@ -50,7 +50,7 @@ public class RecuitSimule {
 
                 int random = ThreadLocalRandom.current().nextInt(0, voisinage.size());
 
-                DataSet voisinRandom = new DataSet(voisinage.get(random));
+                DataSet voisinRandom = new DataSet(voisinage.get(random).getDataSet());
 
                 double variationF = new FonctionObjective().fonctionObjective(voisinRandom) - fMax;
 
@@ -58,15 +58,10 @@ public class RecuitSimule {
                     dataSetArrayList.add(voisinRandom);
 
                     if (new FonctionObjective().fonctionObjective(dataSetArrayList.get(i + 1)) > fMax) {
-//                        System.out.println("Meilleur fonction objective");
-//                        System.out.println(dataSetArrayList.get(i + 1));
                         solutionMax = new DataSet(dataSetArrayList.get(i + 1));
                         fMax = new FonctionObjective().fonctionObjective(dataSetArrayList.get(i + 1));
                     }
                 } else {
-//                    System.out.println("Solution pire");
-//                    System.out.println(new FonctionObjective().fonctionObjective(voisinRandom));
-//                    System.out.println(voisinRandom);
                     double p = ThreadLocalRandom.current().nextDouble(0, 1.01);
 
                     if (p <= Math.exp(-variationF / arrayListTemperature.get(k)))
@@ -81,5 +76,4 @@ public class RecuitSimule {
         }
         return solutionMax;
     }
-
 }

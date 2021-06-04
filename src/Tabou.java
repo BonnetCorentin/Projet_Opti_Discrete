@@ -1,51 +1,62 @@
 import javax.xml.crypto.Data;
-import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Tabou {
 
-    public ArrayList<Bin> methodeTabou(DataSet sol_initiale,int maxIter, String type_voisinage){
-        DataSet xmin = sol_initiale;
-        FonctionObjective f = new FonctionObjective();
-        double fx0 = f.fonctionObjective(sol_initiale);
-        ArrayList<DataSet> listeVoisinInitial = new ArrayList<>();
-        DataSet voisin = new DataSet();
-        ArrayList<DataSet> listeTabou = new ArrayList<>();
-        ArrayList<Double> fitness = new ArrayList<>();
-        ArrayList<Double> fitnessParIteration = new ArrayList<>();
-        double meilleurFitness=fx0;
+    public DataSet methodeTabou(DataSet sol_initiale,int maxIter, char type_voisinage, int tailleListeTabou) {
+        ArrayList<Dataset_item> voisinage = new ArrayList<>();
+        ArrayList<Double> fitnessVoisin = new ArrayList<Double>();
+        int[] listeTabou = new int[tailleListeTabou];
+        int indice = 0;
 
-        if(type_voisinage == "A"){ //Voisinage par déplacement d'item
-            Voisinage vA = new Voisinage();
-            listeVoisinInitial = vA.voisinageA(sol_initiale);
-//            System.out.println("Voisin début "+listeVoisinInitial);
+        for (int i = 0; i < maxIter; i++) {
+            double fitnessVoisinageInitial = new FonctionObjective().fonctionObjective(sol_initiale);
+            double maxF = 0;
+            switch (type_voisinage) {
+                case 'A':
+                    voisinage = new Voisinage().voisinageA(sol_initiale);
+                    break;
+                case 'B':
+            //        voisinage = new Voisinage().voisinageB(sol_initiale);
+                    break;
+                default:
+                    System.out.println("Veuillez choisir A ou B");
+                    break;
+            }
 
-            for(int j=0;j<maxIter;j++){
+            for (int j = 0; j < voisinage.size(); j++) {
+                double temp = new FonctionObjective().fonctionObjective(voisinage.get(j).getDataSet());
+                if (temp > maxF) {
+                    maxF = temp;
+                    indice = j;
+                }
+                fitnessVoisin.add(temp);
+            }
 
-                for(int i=0;i<listeVoisinInitial.size();i++){  //Pour tout les voisins, on calcule la fitness
-                    fitness.add(f.fonctionObjective(listeVoisinInitial.get(i)));
-//                    System.out.println("Fitness voisin n°"+i+" : "+fitness.get(i));
+            System.out.println("Fitness voisin "+fitnessVoisin.toString());
+
+            int idTabou = voisinage.get(indice).getItem().getIdItem();
+            System.out.println("-------Liste tabou ----------------\n" +listeTabou[0]);
+            System.out.println("Id tabou : \n"+idTabou);
+
+            for(int z=0;z<listeTabou.length;z++){
+                System.out.println(listeTabou[z]);
+            }
+            if(IntStream.of(listeTabou).anyMatch(x->x==idTabou)==false){
+                if(maxF>fitnessVoisinageInitial){
+                    fitnessVoisinageInitial=maxF;
+                    sol_initiale= new DataSet(voisinage.get(indice).getDataSet());
+                }else{
+                    int interdiction = voisinage.get(indice).getItem().getIdItem();
+                    sol_initiale= new DataSet(voisinage.get(indice).getDataSet());
+                    listeTabou[0]=interdiction;
                 }
-                for(int z=0;z<listeVoisinInitial.size();z++){
-                    if(meilleurFitness<fitness.get(z)){
-                        voisin = listeVoisinInitial.get(z);
-                        meilleurFitness=fitness.get(z);
-                    }
-                }
-                if(meilleurFitness<fx0){
-                    listeTabou.add(voisin);
-                }
-                fitnessParIteration.add(meilleurFitness);
-                listeVoisinInitial.clear();
-                listeVoisinInitial=vA.voisinageA(voisin);
-                fitness.clear();
-//                System.out.println("Voisin fin "+listeVoisinInitial);
-//                System.out.println(fitness);
-//                System.out.println(fitnessParIteration);
             }
         }
-
-        return null;
+        return sol_initiale;
     }
 }

@@ -1,11 +1,12 @@
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class Voisinage {
-    public ArrayList<DataSet> voisinageA(DataSet sol_Initiale) {
-
-        ArrayList<DataSet> voisin = new ArrayList<>();
+    public ArrayList<Dataset_item> voisinageA(DataSet sol_Initiale) {
+        ArrayList<Dataset_item> listeVoisin = new ArrayList<>();
         ChangeItemVersBin c = new ChangeItemVersBin();
 
         for (int i = 0; i < sol_Initiale.getListItems().size(); i++) {
@@ -18,19 +19,14 @@ public class Voisinage {
                 boolean tempo = c.changeItemToBin(dataVoisin, itemAdeplacer, binDestination);
 
                 if (tempo == true) {
-                    voisin.add(dataVoisin);
-
-
-//                    FonctionObjective ft = new FonctionObjective();
-//                    System.out.println(ft.fonctionObjective(dataVoisin));
+                    Dataset_item temp = new Dataset_item(new DataSet(dataVoisin) ,new Items(itemAdeplacer));
+                    listeVoisin.add(temp);
                 }
                 dataVoisin = new DataSet(sol_Initiale);
                 itemAdeplacer = dataVoisin.getListItems().get(i);
             }
         }
-//        System.out.println("Voisin A de la solution initiale: " + voisin.size());
-//        System.out.println(voisin.toString());
-        return voisin;
+        return listeVoisin;
     }
 
 
