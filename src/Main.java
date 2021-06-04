@@ -4,6 +4,12 @@ import com.google.ortools.linearsolver.MPObjective;
 import com.google.ortools.linearsolver.MPSolver;
 import com.google.ortools.linearsolver.MPVariable;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.io.File;
+import java.text.ParseException;
+
+
 public class Main {
     public static void main(String[] args) {
 
@@ -42,11 +48,10 @@ public class Main {
 
         System.out.println();
         System.out.println("Question 3.a");
-        System.out.println("Solution optimale du problème binpack1d_00.txt :");
-
+        System.out.println("Solution optimale du problème:");
         Loader.loadNativeLibraries();
         ChargementData datas = new ChargementData();
-        DataSet dataset = datas.loadFile("./data/test.txt");
+        DataSet dataset = datas.loadFile("./data/binpack1d_00.txt");
         System.out.println(solutionOptimale(dataset));
 
         //Question 3.b: Limite d'exécution
@@ -67,17 +72,22 @@ public class Main {
         }
         System.out.println();
 
+
         //Question 4.b: firstFitAleatoire
 
         System.out.println("Question 4.b");
         for (int j = 0; j < listeFichier.length - 1; j++) {
+            long chrono = 0;
+            chrono = java.lang.System.currentTimeMillis();
             String fileDataName = listeFichier[j];
             ChargementData data = new ChargementData();
             DataSet dataset2 = data.loadFile("./data/" + fileDataName);
             System.out.println("Nombre de bin à utiliser avec la méthode firstFitAleatoire pour " + listeFichier[j] + ": " + ft.firstFitAleatoire(dataset2));
+            long chrono2 = java.lang.System.currentTimeMillis();
+            long temps = chrono2 - chrono;
+            System.out.println("Temps ecoule = " + temps + " ms");
         }
         System.out.println();
-
 
         //Question 5.a: Deplacer un item d'un bin vers un autre
         //A partir de la méthode First Fit Decreasing (question 2)
@@ -128,7 +138,36 @@ public class Main {
         //Fonction Objective
         System.out.println("Fonction objective après changement d'un item vers un autre bin:\n f(x1)=" + f2.fonctionObjective(dataset5) + "\n");
 
+        System.out.println("Question 8: Recuit simulé");
 
+        ArrayList<String> données=lectureTousFichiers(new File("C:/Users/quent/OneDrive/Documents/A Polytech/Semestre 8/Optimisation discrete/Projet_Opti_Discrete/data"));
+        for(int i=0;i<100;i++){
+            long chrono = 0 ;
+            chrono = java.lang.System.currentTimeMillis() ;
+            //        String fileDataName3 = "binpack1d_00.txt";
+            ChargementData data3 = new ChargementData();
+            DataSet dataset4 = data3.loadFile("./data/binpack1d_00.txt");
+
+/*            System.out.println("-------------------------------------------------------------------");
+            System.out.println("DataSet initial : ");
+            System.out.println(dataset4);
+
+            System.out.println("Avec un nombre de bin = " + dataset4.getListBins().size());
+*/
+            RecuitSimule recuitSimule = new RecuitSimule();
+//            System.out.println(données.get(i));
+            System.out.println("Solution obtenue avec le recuit simulé :");
+            DataSet d = recuitSimule.recuitSimule(dataset4, 10, 'B');
+//                System.out.println(d);
+                System.out.println("Avec un nombre de bin = " + d.getListBins().size());
+                long chrono2 = java.lang.System.currentTimeMillis() ;
+                long temps = chrono2 - chrono ;
+                System.out.println("Temps ecoule = " + temps + " ms") ;
+                System.out.println("---------------------------------");
+
+        }
+
+/*
         //Question 7 : Tabu search
 
         System.out.println("Question 7: tabou search");
@@ -146,27 +185,7 @@ public class Main {
         System.out.println(dataset3);
         System.out.println("Nb bin fin tabou = "+dataset3.getListBins().size());
 
-/*
-        System.out.println("Question 8: Recuit simulé");
-
-        String fileDataName3 = "binpack1d_00.txt";
-        ChargementData data3 = new ChargementData();
-        DataSet dataset4 = data3.loadFile("./data/" + fileDataName3);
-
-        System.out.println("-------------------------------------------------------------------");
-        System.out.println("DataSet initial : ");
-        System.out.println(dataset4);
-
-        System.out.println("Avec un nombre de bin = " + dataset4.getListBins().size());
-
-        RecuitSimule recuitSimule = new RecuitSimule();
-
-        System.out.println("Solution obtenue avec le recuit simulé :");
-
-        DataSet d = recuitSimule.recuitSimule(dataset4, 3, 'A');
-        System.out.println(d);
-        System.out.println("Avec un nomber de bin = " + d.getListBins().size());
-*/
+ */
     }
 
     static String solutionOptimale(DataSet dataSet) {
@@ -211,15 +230,15 @@ public class Main {
 
             for (j = 0; j < data.numBins; ++j) {
                 if (y[j].solutionValue() == 1) {
-                    System.out.println("\nBin n°" + j);
+//                    System.out.println("\nBin n°" + j);
                     double binWeight = 0;
                     for (i = 0; i < data.numItems; ++i) {
                         if (x[i][j].solutionValue() == 1) {
-                            System.out.println("Item n°" + i + " avec un poids de : " + data.weights[i]);
+//                            System.out.println("Item n°" + i + " avec un poids de : " + data.weights[i]);
                             binWeight += data.weights[i];
                         }
                     }
-                    System.out.println("Poids du bin: " + binWeight);
+//                    System.out.println("Poids du bin: " + binWeight);
                     totalWeight += binWeight;
                 }
             }
@@ -227,5 +246,17 @@ public class Main {
         } else {
             return ("Aucune solution optimale possible.");
         }
+    }
+
+    static ArrayList<String> lectureTousFichiers(File folder) {
+        ArrayList<String> listeFichier = new ArrayList<>();
+        for (File file : folder.listFiles()) {
+            if (!file.isDirectory()) {
+                listeFichier.add(file.getName());
+            } else {
+                lectureTousFichiers(file);
+            }
+        }
+        return listeFichier;
     }
 }

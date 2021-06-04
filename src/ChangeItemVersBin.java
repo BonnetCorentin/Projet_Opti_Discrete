@@ -11,19 +11,16 @@ public class ChangeItemVersBin {
             if (dataset.getListBins().get(i).getListItem().contains(item) == true) {
                 tempo = i;
                 dataset.getListBins().get(i).removeItem(item);
-                if (dataset.getListBins().get(i).getListItem().isEmpty()) {
-                    dataset.removeBin(dataset.getListBins().get(i));
-                }
             }
         }
+
         if (!binDestination.addItem(item)) {
-            if (dataset.getListBins().size() <= tempo) {
-                Bin bin = new Bin(dataset.getTailleBin());
-                bin.addItem(item);
-                dataset.addBin(bin);
-            } else
-                dataset.getListBins().get(tempo).addItem(item);
+            dataset.getListBins().get(tempo).addItem(item);
             return false;
+        }else{
+            if (dataset.getListBins().get(tempo).getListItem().isEmpty()) {
+                dataset.removeBin(dataset.getListBins().get(tempo));
+            }
         }
         return true;
     }
