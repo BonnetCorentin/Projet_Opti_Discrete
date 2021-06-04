@@ -23,8 +23,8 @@ public class Voisinage {
                 }
             }
         }
-        System.out.println("Voisin A de la solution initiale: " + voisin.size());
-        System.out.println(voisin.toString());
+//        System.out.println("Voisin A de la solution initiale: " + voisin.size());
+//        System.out.println(voisin.toString());
         return voisin;
     }
 

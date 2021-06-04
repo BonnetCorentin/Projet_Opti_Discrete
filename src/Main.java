@@ -137,9 +137,9 @@ public class Main {
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
-        Voisinage vA = new Voisinage();
-        System.out.println("---------------------------------------------------------------------------");
-        vA.voisinageB(dataset3);
+        System.out.println("-------------------------------------------------------------------");
+        Tabou t = new Tabou();
+        t.methodeTabou(dataset3,13,"A");
     }
 
     static String solutionOptimale(DataSet dataSet) {
