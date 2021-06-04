@@ -137,15 +137,18 @@ public class Main {
         ChargementData data2 = new ChargementData();
         DataSet dataset3 = data2.loadFile("./data/" + fileDataName2);
 
-        System.out.println("DataSet initial : ");
-        System.out.println(dataset3);
-        System.out.println("Nb bin initial = "+dataset3.getListBins().size());
-        System.out.println("-------------------------------------------------------------------");
-        Tabou t = new Tabou();
-        t.methodeTabou(dataset3, 100,'A',1);
-        System.out.println(dataset3);
-        System.out.println("Nb bin fin tabou = "+dataset3.getListBins().size());
-
+        for (int i = 0; i < 100; i++) {
+            //System.out.println("DataSet initial : ");
+            //System.out.println(dataset3);
+            //System.out.println("Nb bin initial = " + dataset3.getListBins().size());
+            //System.out.println("Fonction objective initiale : " + new FonctionObjective().fonctionObjective(dataset3));
+            System.out.println("-------------------------------------------------------------------");
+            Tabou t = new Tabou();
+            DataSet dataSetTabou = t.methodeTabou(dataset3, 100, 'A', 1);
+            System.out.println(dataSetTabou);
+            System.out.println("Nb bin fin tabou = " + dataSetTabou.getListBins().size());
+            System.out.println("Fonction objective finale = " + new FonctionObjective().fonctionObjective(dataSetTabou));
+        }
 /*
         System.out.println("Question 8: Recuit simulé");
 
