@@ -17,14 +17,9 @@ public class RecuitSimule {
         ChangeItemVersBin c = new ChangeItemVersBin();
         BinToBin b = new BinToBin();
         DataSet voisinRandom = new DataSet();
-
-        System.out.println("FMax = " + fMax);
-
         int i = 0;
         double u = 0.01;
         int n1 = (int) (Math.log(Math.log(0.8) / Math.log(0.01)) / Math.log(u));
-
-        System.out.println("n1 = " + n1);
         for (int k = 0; k < 100; k++) {
             for (int j = 0; j < 10; j++) {
                 switch (voisinageChoix) {
