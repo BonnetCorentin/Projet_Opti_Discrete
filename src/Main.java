@@ -140,10 +140,10 @@ public class Main {
 
         System.out.println("Question 8: Recuit simulé");
 
-        ArrayList<String> données=lectureTousFichiers(new File("C:/Users/quent/OneDrive/Documents/A Polytech/Semestre 8/Optimisation discrete/Projet_Opti_Discrete/data"));
-        for(int i=0;i<100;i++){
-            long chrono = 0 ;
-            chrono = java.lang.System.currentTimeMillis() ;
+        ArrayList<String> données = lectureTousFichiers(new File("C:\\Users\\coren\\Documents\\Cours 3A\\Modélisation\\Projet_Opti_Discrete\\data"));
+        for (int i = 0; i < 100; i++) {
+            long chrono = 0;
+            chrono = java.lang.System.currentTimeMillis();
             //        String fileDataName3 = "binpack1d_00.txt";
             ChargementData data3 = new ChargementData();
             DataSet dataset4 = data3.loadFile("./data/binpack1d_00.txt");
@@ -159,15 +159,15 @@ public class Main {
             System.out.println("Solution obtenue avec le recuit simulé :");
             DataSet d = recuitSimule.recuitSimule(dataset4, 10, 'B');
 //                System.out.println(d);
-                System.out.println("Avec un nombre de bin = " + d.getListBins().size());
-                long chrono2 = java.lang.System.currentTimeMillis() ;
-                long temps = chrono2 - chrono ;
-                System.out.println("Temps ecoule = " + temps + " ms") ;
-                System.out.println("---------------------------------");
+            System.out.println("Avec un nombre de bin = " + d.getListBins().size());
+            long chrono2 = java.lang.System.currentTimeMillis();
+            long temps = chrono2 - chrono;
+            System.out.println("Temps ecoule = " + temps + " ms");
+            System.out.println("---------------------------------");
 
         }
 
-/*
+
         //Question 7 : Tabu search
 
         System.out.println("Question 7: tabou search");
@@ -178,14 +178,16 @@ public class Main {
 
         System.out.println("DataSet initial : ");
         System.out.println(dataset3);
-        System.out.println("Nb bin initial = "+dataset3.getListBins().size());
+        System.out.println("Nb bin initial = " + dataset3.getListBins().size());
+        System.out.println("Avec une fonction objective de : "+new FonctionObjective().fonctionObjective(dataset3));
         System.out.println("-------------------------------------------------------------------");
         Tabou t = new Tabou();
-        t.methodeTabou(dataset3, 100,'A',1);
-        System.out.println(dataset3);
-        System.out.println("Nb bin fin tabou = "+dataset3.getListBins().size());
+        DataSet d = t.methodeTabou(dataset3, 1000, 'B', 3);
+        System.out.println(d);
+        System.out.println("Nb bin fin tabou = " + d.getListBins().size());
+        System.out.println("Avec une fonction objective de : "+new FonctionObjective().fonctionObjective(d));
 
- */
+
     }
 
     static String solutionOptimale(DataSet dataSet) {

@@ -7,14 +7,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RecuitSimule {
 
     DataSet recuitSimule(DataSet dataSet, double temperature, char voisinageChoix) {
-        ArrayList<Dataset_item> voisinage = new ArrayList<>();
         ArrayList<Double> arrayListTemperature = new ArrayList<>();
         arrayListTemperature.add(temperature);
         DataSet solutionMax = new DataSet(dataSet);
         ArrayList<DataSet> dataSetArrayList = new ArrayList<>();
         dataSetArrayList.add(dataSet);
         double fMax = new FonctionObjective().fonctionObjective(dataSet);
-        boolean passe = false;
+        boolean passe;
         ChangeItemVersBin c = new ChangeItemVersBin();
         BinToBin b = new BinToBin();
         DataSet voisinRandom = new DataSet();
@@ -30,7 +29,7 @@ public class RecuitSimule {
             for (int j = 0; j < 10; j++) {
                 switch (voisinageChoix) {
                     case 'A':
-                        do{
+                        do {
                             int randomBin = ThreadLocalRandom.current().nextInt(0, dataSet.getListBins().size());
                             Bin binDestination = dataSet.getListBins().get(randomBin);
                             int randomItem = ThreadLocalRandom.current().nextInt(0, dataSet.getNbItems());
@@ -42,10 +41,10 @@ public class RecuitSimule {
                             } else {
                                 passe = false;
                             }
-                        }while(passe == false);
+                        } while (passe == false);
                         break;
                     case 'B':
-                        do{
+                        do {
                             int randomItem = ThreadLocalRandom.current().nextInt(0, dataSet.getNbItems());
                             Items itemADeplacer = dataSet.getListItems().get(randomItem);
                             int randomItem2 = ThreadLocalRandom.current().nextInt(0, dataSet.getNbItems());
@@ -58,15 +57,11 @@ public class RecuitSimule {
                             } else {
                                 passe = false;
                             }
-                        }while(passe == false);
+                        } while (passe == false);
                         break;
                     default:
                         System.out.println("Veuillez choisir A ou B");
                         break;
-                }
-
-                if (voisinage.size() == 0) {
-                    return dataSetArrayList.get(i);
                 }
 
                 double variationF = new FonctionObjective().fonctionObjective(voisinRandom) - fMax;

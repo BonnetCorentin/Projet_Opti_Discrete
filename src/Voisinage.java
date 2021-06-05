@@ -19,7 +19,7 @@ public class Voisinage {
                 boolean tempo = c.changeItemToBin(dataVoisin, itemAdeplacer, binDestination);
 
                 if (tempo == true) {
-                    Dataset_item temp = new Dataset_item(new DataSet(dataVoisin) ,new Items(itemAdeplacer));
+                    Dataset_item temp = new Dataset_item(new DataSet(dataVoisin), new Items(itemAdeplacer));
                     listeVoisin.add(temp);
                 }
                 dataVoisin = new DataSet(sol_Initiale);
@@ -30,8 +30,8 @@ public class Voisinage {
     }
 
 
-    public ArrayList<DataSet> voisinageB(DataSet sol_Initiale) {
-        ArrayList<DataSet> voisin = new ArrayList<>();
+    public ArrayList<DatasetItemItem> voisinageB(DataSet sol_Initiale) {
+        ArrayList<DatasetItemItem> voisin = new ArrayList<>();
         BinToBin b = new BinToBin();
 
         for (int i = 0; i < sol_Initiale.getListItems().size(); i++) {
@@ -46,7 +46,8 @@ public class Voisinage {
 
                 if (tempo == true) {
                     if (!voisin.contains(dataVoisin)) {
-                        voisin.add(dataVoisin);
+                        DatasetItemItem d = new DatasetItemItem(dataVoisin, item1, item2);
+                        voisin.add(d);
                     }
                     dataVoisin = new DataSet(sol_Initiale);
                     item1 = dataVoisin.getListItems().get(i);
