@@ -20,7 +20,7 @@ public class RecuitSimule {
         int i = 0;
         double u = 0.01;
         int n1 = (int) (Math.log(Math.log(0.8) / Math.log(0.01)) / Math.log(u));
-        for (int k = 0; k < 100; k++) {
+        for (int k = 0; k < 100; k++) { //Iteration
             for (int j = 0; j < 10; j++) {
                 switch (voisinageChoix) {
                     case 'A':

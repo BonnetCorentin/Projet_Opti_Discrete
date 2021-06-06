@@ -25,14 +25,14 @@ public class Main {
         System.out.println();
 
         //Question 3.a: Solution optimale de « binpack1d_00.txt »
-//        solutionOpti_Binpack1D_00();
+//        solutionOpti_Binpack1D_00("binpack1d_00.txt");
         System.out.println();
 
         //Question 3.b: Limite d'exécution
         //Faire des tests avec plusieurs jeux de données et voir quand le temps d'éxécution
         //devient trop long (exemple: plus de 5min d'éxécution).
         //Faire des moyennes de temps d'éxécution entre les datas...
-
+//        solutionOpti_Binpack1D_00("test.txt");
 
         //Question 4.a: Un item par bin
         //Etant donné que l'on place un item par bin, on peut conclure aisément qu'il y aura
@@ -59,11 +59,11 @@ public class Main {
 
         //Question 6: Recuit simulé
         //Pour changer les autres paramètres, aller dans la classe RecuitSimulé
-//        recuitSimulé(listeFichier,'A',3);
+        recuitSimulé(listeFichier,'A',3);
         System.out.println();
 
         //Question 7 : Tabu search
-        tabuSearch(listeFichier,'B',100);
+//        tabuSearch(listeFichier,'A',100);
     }
     static void borneInferieur(String[] listeFichier){
         System.out.println("Question 1");
@@ -91,13 +91,13 @@ public class Main {
             stopChrono(chrono);
         }
     }
-    static void solutionOpti_Binpack1D_00(){
+    static void solutionOpti_Binpack1D_00(String name){
         long chrono = startChrono();
         System.out.println("Question 3.a");
         System.out.println("Solution optimale du problème:");
         Loader.loadNativeLibraries();
         ChargementData datas = new ChargementData();
-        DataSet dataset = datas.loadFile("./data/binpack1d_00.txt");
+        DataSet dataset = datas.loadFile("./data/"+name);
         System.out.println(solutionOptimale(dataset));
         stopChrono(chrono);
     }
