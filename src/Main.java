@@ -21,7 +21,7 @@ public class Main {
         System.out.println();
 
         //Question 2: First Fit Decreasing
-//        firstFitDecreasing(listeFichier);
+        firstFitDecreasing(listeFichier);
         System.out.println();
 
         //Question 3.a: Solution optimale de « binpack1d_00.txt »
@@ -59,13 +59,14 @@ public class Main {
 
         //Question 6: Recuit simulé
         //Pour changer les autres paramètres, aller dans la classe RecuitSimulé
-        recuitSimulé(listeFichier,'A',3);
+        recuitSimulé(listeFichier,'B',3);
         System.out.println();
 
         //Question 7 : Tabu search
 //        tabuSearch(listeFichier,'A',100);
     }
-    static void borneInferieur(String[] listeFichier){
+
+    static void borneInferieur(String[] listeFichier) {
         System.out.println("Question 1");
         System.out.println("Borne inférieur :");
         for (int i = 0; i < listeFichier.length - 1; i++) {
@@ -78,7 +79,8 @@ public class Main {
             stopChrono(chrono);
         }
     }
-    static void firstFitDecreasing(String[] listeFichier){
+
+    static void firstFitDecreasing(String[] listeFichier) {
         System.out.println("Question 2");
         System.out.println("First Fit Decreasing :");
         FirstFitDecreasing ft = new FirstFitDecreasing();
@@ -91,17 +93,19 @@ public class Main {
             stopChrono(chrono);
         }
     }
-    static void solutionOpti_Binpack1D_00(String name){
+
+    static void solutionOpti_Binpack1D_00(String name) {
         long chrono = startChrono();
         System.out.println("Question 3.a");
         System.out.println("Solution optimale du problème:");
         Loader.loadNativeLibraries();
         ChargementData datas = new ChargementData();
-        DataSet dataset = datas.loadFile("./data/"+name);
+        DataSet dataset = datas.loadFile("./data/" + name);
         System.out.println(solutionOptimale(dataset));
         stopChrono(chrono);
     }
-    static void unItemParBin(String[] listeFichier){
+
+    static void unItemParBin(String[] listeFichier) {
         System.out.println("Question 4.a");
         for (int j = 0; j < listeFichier.length - 1; j++) {
             long chrono = startChrono();
@@ -112,7 +116,8 @@ public class Main {
             stopChrono(chrono);
         }
     }
-    static void firstFitAleatoire(String[] listeFichier){
+
+    static void firstFitAleatoire(String[] listeFichier) {
         System.out.println("Question 4.b");
         FirstFitDecreasing ft = new FirstFitDecreasing();
         for (int j = 0; j < listeFichier.length - 1; j++) {
@@ -124,13 +129,14 @@ public class Main {
             stopChrono(chrono);
         }
     }
-    static void voisinageA(String fileDataName){
+
+    static void voisinageA(String fileDataName) {
         long chrono = startChrono();
         System.out.println("Question 5.a");
         fileDataName = "binpack1d_00.txt";
         ChargementData data = new ChargementData();
         DataSet dataset = data.loadFile("./data/" + fileDataName);
-        System.out.println("Dataset de base :\n"+dataset.toString());
+        System.out.println("Dataset de base :\n" + dataset.toString());
         System.out.print("f(x) de la solution de base :");
         fonctionObjective(dataset);
         System.out.println();
@@ -138,17 +144,18 @@ public class Main {
         Bin binDestination = dataset.getListBins().get(8);
         ChangeItemVersBin c = new ChangeItemVersBin();
         c.changeItemToBin(dataset, itemaDeplacer, binDestination);
-        System.out.println("Dataset final :\n"+dataset.toString());
+        System.out.println("Dataset final :\n" + dataset.toString());
         stopChrono(chrono);
         System.out.print("f(x) de la solution finale :");
         fonctionObjective(dataset);
     }
-    static void voisinageB(String fileDataName){
+
+    static void voisinageB(String fileDataName) {
         long chrono = startChrono();
         System.out.println("Question 5.b");
         ChargementData data5 = new ChargementData();
         DataSet dataset = data5.loadFile("./data/" + fileDataName);
-        System.out.println("Dataset de base :\n"+dataset.toString());
+        System.out.println("Dataset de base :\n" + dataset.toString());
         System.out.print("f(x) de la solution de base ");
         fonctionObjective(dataset);
         System.out.println();
@@ -156,23 +163,24 @@ public class Main {
         Items itemaDeplacer3 = dataset.getListItems().get(3);
         BinToBin binToBin = new BinToBin();
         binToBin.binToBin(dataset, itemaDeplacer2, itemaDeplacer3);
-        System.out.println("Dataset final :\n"+dataset.toString());
+        System.out.println("Dataset final :\n" + dataset.toString());
         stopChrono(chrono);
         System.out.print("f(x) de la solution finale :");
         fonctionObjective(dataset);
     }
-    static void recuitSimulé(String[] listeFichier, char choix_voisinage,int temperature){
+
+    static void recuitSimulé(String[] listeFichier, char choix_voisinage, int temperature) {
         System.out.println("Question 6: Recuit simulé");
 
         for (int i = 0; i < listeFichier.length; i++) {
             System.out.println(listeFichier[i]);
             long chrono = startChrono();
             ChargementData data3 = new ChargementData();
-            DataSet dataset = data3.loadFile("./data/"+listeFichier[i]);
+            DataSet dataset = data3.loadFile("./data/" + listeFichier[i]);
 //            System.out.println("Dataset de base :\n"+dataset.toString());
             System.out.print("f(x) de la solution de base :");
             fonctionObjective(dataset);
-            System.out.println("Avec un nombre de bin = "+dataset.getListBins().size());
+            System.out.println("Avec un nombre de bin = " + dataset.getListBins().size());
             System.out.println();
             RecuitSimule recuitSimule = new RecuitSimule();
             System.out.println("Solution obtenue avec le recuit simulé :");
@@ -185,9 +193,10 @@ public class Main {
             System.out.println("-------------------------Prochain fichier--------------------------------");
         }
     }
-    static void tabuSearch(String[] listeFichier, char choix_voisinage, int nbIter){
+
+    static void tabuSearch(String[] listeFichier, char choix_voisinage, int nbIter) {
         System.out.println("Question 7: tabou search");
-        for(int i=0;i< listeFichier.length;i++){
+        for (int i = 0; i < listeFichier.length; i++) {
             System.out.println(listeFichier[i]);
             long chrono = startChrono();
             ChargementData data2 = new ChargementData();
@@ -207,7 +216,8 @@ public class Main {
             System.out.println("-------------------------Prochain fichier--------------------------------");
         }
     }
-    static void fonctionObjective(DataSet solution){
+
+    static void fonctionObjective(DataSet solution) {
         FonctionObjective f = new FonctionObjective();
         System.out.println(f.fonctionObjective(solution));
     }
@@ -271,14 +281,16 @@ public class Main {
             return ("Aucune solution optimale possible.");
         }
     }
-    static long startChrono(){
-        long chrono=0;
-        chrono = java.lang.System.currentTimeMillis() ;
+
+    static long startChrono() {
+        long chrono = 0;
+        chrono = java.lang.System.currentTimeMillis();
         return chrono;
     }
-    static void stopChrono(long chrono){
-        long chrono2 = java.lang.System.currentTimeMillis() ;
-        long temps = chrono2 - chrono ;
-        System.out.println("Temps ecoule = " + temps + " ms") ;
+
+    static void stopChrono(long chrono) {
+        long chrono2 = java.lang.System.currentTimeMillis();
+        long temps = chrono2 - chrono;
+        System.out.println("Temps ecoule = " + temps + " ms");
     }
 }
