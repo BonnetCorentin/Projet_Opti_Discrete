@@ -59,11 +59,11 @@ public class Main {
 
         //Question 6: Recuit simulé
         //Pour changer les autres paramètres, aller dans la classe RecuitSimulé
-        recuitSimulé(listeFichier,'A',3);
+//        recuitSimulé(listeFichier,'A',3);
         System.out.println();
 
         //Question 7 : Tabu search
-//        tabuSearch(listeFichier,'A',100);
+        tabuSearch(listeFichier,'A',100,100);
     }
     static void borneInferieur(String[] listeFichier){
         System.out.println("Question 1");
@@ -185,20 +185,20 @@ public class Main {
             System.out.println("-------------------------Prochain fichier--------------------------------");
         }
     }
-    static void tabuSearch(String[] listeFichier, char choix_voisinage, int nbIter){
+    static void tabuSearch(String[] listeFichier, char choix_voisinage, int nbIter,int tailleListe){
         System.out.println("Question 7: tabou search");
         for(int i=0;i< listeFichier.length;i++){
             System.out.println(listeFichier[i]);
             long chrono = startChrono();
             ChargementData data2 = new ChargementData();
-            DataSet dataset = data2.loadFile("./data/" + listeFichier[i]);
+            DataSet dataset = data2.loadFile("./data/"+listeFichier[i]);
 //            System.out.println("Dataset de base :\n"+dataset.toString());
             System.out.print("f(x) de la solution de base :");
             fonctionObjective(dataset);
             System.out.println("Nb bin initial = " + dataset.getListBins().size());
             System.out.println();
             Tabou t = new Tabou();
-            DataSet d = t.methodeTabou(dataset, nbIter, choix_voisinage, 3);
+            DataSet d = t.methodeTabou(dataset, nbIter, choix_voisinage, tailleListe);
 //            System.out.println("Dataset final :\n"+d);
             System.out.println("Nb bin fin tabou = " + d.getListBins().size());
             stopChrono(chrono);
